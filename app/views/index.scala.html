@@ -1,0 +1,23 @@
+@(toots: List[Toot], tootForm: Form[String])
+
+@import helper._
+@main("Welcome to Tootr! The most SEO'd social media of awesome #YOLO") {
+
+    <p>There are @toots.size toots</p>
+
+        <ul>
+
+            @toots.map { toot =>
+
+
+                <li><div><small>on @toot.posted</small></div><p>@toot.message</p></li>
+
+            }
+
+        </ul>
+
+    @form(routes.Application.newToot, 'class -> "form-horizontal") {
+        @inputText(tootForm("message"), '_label -> "What are you up toot, bro?")
+        <input type="submit" value="Toot it!" />
+    }
+}
